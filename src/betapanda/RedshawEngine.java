@@ -1,13 +1,11 @@
 package betapanda;
 
-import java.io.File;
 
 import awesome.core.Input;
 import awesome.core.PandaAudio;
 import awesome.core.PandaDisplay;
 import awesome.core.PandaEngine;
 import awesome.core.Xbox;
-import betapanda.core.Settings;
 import betapanda.core.Shader;
 import betapanda.net.Network;
 import betapanda.util.Keyboard;
@@ -27,7 +25,7 @@ class RedshawEngine
 			if("path".equals(ss[0])) path = ss[1];
 		}
 		if(args.length>0 && args[0].equals("dev")) demo = false;
-		Settings.Initialize(new File("Settings.ini")); // LOAD CONFIG
+//		Settings.Initialize(new File("Settings.ini")); // LOAD CONFIG
 		Xbox.setup(1);
 		Xbox.createController();
 		
