@@ -36,7 +36,7 @@ class RedshawEngine
 			PandaDisplay.enableFullscreen();
 			PandaDisplay.setPreferredScreen(1);
 		}
-		PandaEngine.create("Pollux", path); // START UP ENGINE
+		PandaEngine.create("Pollux Game 2.0", path); // START UP ENGINE
 		PandaAudio.create();
 		if(demo) PandaDisplay.setMouseGrabbed(true);
 		
@@ -49,7 +49,7 @@ class RedshawEngine
 		
 		while(running)
 		{
-			if(PandaDisplay.closePressed() || Input.keyReleased(Keyboard.KEY_ESCAPE)) running =false;	//for safety
+			if(PandaDisplay.closePressed() || Input.keyReleased(Keyboard.KEY_ESCAPE)) running =false;
 			game.logic();
 			Shader.updateBufferBlocks();
 			game.draw();
