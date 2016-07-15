@@ -8,6 +8,8 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengl.GL31;
 
+import awesome.core.Painter;
+import awesome.core.ResourceLoader;
 import awesome.math.Matrix;
 
 public class RenderableMesh
@@ -16,15 +18,21 @@ public class RenderableMesh
 	private int glBuffer, glArrayObject;
 	private float[] data;
 	private Matrix matrix = new Matrix();
+	public int texture;
 	
 	// Loader
-	public RenderableMesh(float[] data, float[] matrix2)
+	public RenderableMesh(float[] data, float[] matrix2, String filename)
 	{
 		this.data = data;
 		this.matrix.set(matrix2);
+		Matrix m = new Matrix();
+		m.setIdentity();
+		m.scale(5, 5, 5);
+		matrix.setMult(m, matrix);
 		glBuffer = GL15.glGenBuffers();
 		glArrayObject = GL30.glGenVertexArrays();
 		render();
+		if(filename!=null) texture = ResourceLoader.getTexture("World/"+filename, false);
 	}
 	
 	// Render
@@ -51,6 +59,7 @@ public class RenderableMesh
 	// Draw
 	public void draw()
 	{
+		Painter.setTexture(texture);
 		GL20.glUniformMatrix4fv(1, true, matrix.asBuffer());
 		GL30.glBindVertexArray(glArrayObject);
 		GL11.glDrawArrays(GL11.GL_TRIANGLES, 0, data.length/8*3);

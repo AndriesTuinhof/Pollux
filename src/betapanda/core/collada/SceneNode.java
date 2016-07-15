@@ -24,7 +24,6 @@ public class SceneNode
 		// Geometry Instance
 		Element e = (Element)item.getElementsByTagName("instance_geometry").item(0);
 		if(e!=null) instanceGeometry = meshes.get(e.getAttribute("url").substring(1));
-		System.out.println(instanceGeometry);
 	}
 
 }

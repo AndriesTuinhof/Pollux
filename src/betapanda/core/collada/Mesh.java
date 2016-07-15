@@ -12,8 +12,9 @@ public class Mesh
 	private HashMap<String, Element> pointers;
 	public float[] renderedData;
 	public String id;
+	public Material material;
 	
-	public Mesh(Element item)
+	public Mesh(Element item, Collada collada)
 	{
 		id = item.getAttribute("id");
 		NodeList l = item.getElementsByTagName("mesh");
@@ -38,6 +39,8 @@ public class Mesh
 		NodeList polyLists = mesh.getElementsByTagName("polylist");
 		if(polyLists.getLength()!=1) throw new RuntimeException("Should have 1 polylist, found "+polyLists.getLength());
 		Element polyList = (Element)polyLists.item(0);
+		material = collada.materials.get(polyList.getAttribute("material"));
+		System.out.println(material);
 		int polygonCount = Integer.parseInt(polyList.getAttribute("count"));
 		NodeList inputs = polyList.getElementsByTagName("input");
 		// Pointers for vertex data

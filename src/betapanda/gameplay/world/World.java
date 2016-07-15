@@ -15,6 +15,7 @@ import awesome.util.FastMath;
 import betapanda.PolluxGame;
 import betapanda.core.Shader;
 import betapanda.core.collada.Collada;
+import betapanda.core.collada.Material;
 import betapanda.core.collada.RenderableMesh;
 import betapanda.gameplay.Entity;
 import betapanda.gameplay.entities.EntityGrenade;
@@ -141,7 +142,9 @@ public class World {
 			testMeshes = new RenderableMesh[collada.nodes.length];
 			for(int i=0;i<testMeshes.length;i++) if(collada.nodes[i].instanceGeometry!=null && !collada.nodes[i].id.startsWith("col_"))
 			{
-				testMeshes[i] = new RenderableMesh(collada.nodes[i].instanceGeometry.renderedData, collada.nodes[i].matrix);
+				Material m = collada.nodes[i].instanceGeometry.material;
+				String materialFile = (m!=null? m.instance_effect.instance_image.filename:null);
+				testMeshes[i] = new RenderableMesh(collada.nodes[i].instanceGeometry.renderedData, collada.nodes[i].matrix, materialFile);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -245,7 +248,6 @@ public class World {
 		Painter.setBlankTexture();
 		for(Entity e: entities) if(e!=null) e.draw();
 		wavefrontShader.bind();
-		Painter.setTexture(groundTexture);
 		for(int i=0;i<testMeshes.length;i++) if(testMeshes[i]!=null) testMeshes[i].draw();
 		
 		for(int i=0;i<monsters.length;i++)
