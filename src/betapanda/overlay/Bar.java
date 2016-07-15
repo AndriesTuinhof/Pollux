@@ -6,7 +6,6 @@ import org.w3c.dom.NamedNodeMap;
 
 import awesome.core.Painter;
 import awesome.core.PandaDisplay;
-import awesome.core.ResourceLoader;
 import betapanda.gameplay.Player;
 
 public class Bar
