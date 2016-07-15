@@ -10,6 +10,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import awesome.core.ResourceLoader;
+
 public class Collada
 {
 	public HashMap<String, Mesh> meshes;
@@ -20,7 +22,7 @@ public class Collada
 	
 	public void loadScene() throws Exception
 	{
-		String path = "D:/Dropbox/Betapanda/PolluxProject/Resources/World/map_test.dae";
+		String path = ResourceLoader.getPath()+"World/map_test.dae";
 		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(path));
 		Node n = doc.getDocumentElement().getFirstChild();
 		while(n!=null)
