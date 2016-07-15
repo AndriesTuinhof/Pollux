@@ -60,14 +60,14 @@ public class grassFloor {
 				shader =Shader.getShader("grass", "matrixBlock");
 			if(grass ==null){
 				grass =new Wavefront(ResourceLoader.openFile("Models/environment/grass1.obj"));
-				textureGrass[0] =ResourceLoader.getTexture("Models/environment/textures/grass1.png", true);
-				textureGrass[1] =ResourceLoader.getTexture("Models/environment/textures/grass2.png", true);
-				textureGrass[2] =ResourceLoader.getTexture("Models/environment/textures/grass3.png", true);
+				textureGrass[0] =ResourceLoader.getTexture("Models/environment/textures/grass1.png", false);
+				textureGrass[1] =ResourceLoader.getTexture("Models/environment/textures/grass2.png", false);
+				textureGrass[2] =ResourceLoader.getTexture("Models/environment/textures/grass3.png", false);
 			}
 
 			if(flower ==null){
 				flower =new Wavefront(ResourceLoader.openFile("Models/environment/ivy1.obj"));
-				textureFlower =ResourceLoader.getTexture("Models/environment/textures/ivy1.png", true);
+				textureFlower =ResourceLoader.getTexture("Models/environment/textures/ivy1.png", false);
 			}
 			if(bush ==null){
 //				bush=new Wavefront(ResourceLoader.openFile("Models/environment/object0.obj"));

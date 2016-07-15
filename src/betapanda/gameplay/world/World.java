@@ -107,7 +107,7 @@ public class World {
 			srcMusic = AL10.alGenSources();// TODO: Release
 			
 			for(int i =0; i <players.length; i++)
-				players[i] =ResourceLoader.getTexture("Textures/Player/player_texture"+(1 +i)+".png", true);
+				players[i] =ResourceLoader.getTexture("Textures/Player/player_texture"+(1 +i)+".png", false);
 
 			File[] fil =new File(ResourceLoader.getPath()+"Models/environment/textures").listFiles();
 			enviromentTextures =new int[fil.length];
@@ -143,8 +143,7 @@ public class World {
 			for(int i=0;i<testMeshes.length;i++) if(collada.nodes[i].instanceGeometry!=null && !collada.nodes[i].id.startsWith("col_"))
 			{
 				Material m = collada.nodes[i].instanceGeometry.material;
-				String materialFile = (m!=null? m.instance_effect.instance_image.filename:null);
-				testMeshes[i] = new RenderableMesh(collada.nodes[i].instanceGeometry.renderedData, collada.nodes[i].matrix, materialFile);
+				testMeshes[i] = new RenderableMesh(collada.nodes[i].instanceGeometry.renderedData, collada.nodes[i].matrix, m);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -306,6 +305,7 @@ public class World {
 		for(EntityMonster e:monsters)if(e !=null){
 			e.drawShadow();
 		}
+		
 		
 	}
 	
