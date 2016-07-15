@@ -23,7 +23,7 @@ public class Image
 		width = Float.parseFloat(att.getNamedItem("width").getNodeValue());
 		height = Float.parseFloat(att.getNamedItem("height").getNodeValue());
 		
-		texture = ResourceLoader.getTexture(att.getNamedItem("res").getNodeValue(), false);
+		texture = ResourceLoader.getTexture(att.getNamedItem("res").getNodeValue(), true);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	}
